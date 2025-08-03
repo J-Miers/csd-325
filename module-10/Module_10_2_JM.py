@@ -1,3 +1,14 @@
+"""
+Jessie Miers
+CSD325 
+8/3/25
+Module 10
+
+Added file menu drop down and changed settings of this python code 
+as directed by the assignment.
+
+"""
+
 import tkinter as tk
 import tkinter.messagebox as msg
 
@@ -43,7 +54,11 @@ class Todo(tk.Tk):
         self.text_frame.pack(side=tk.BOTTOM, fill=tk.X)
         self.task_create.focus_set()
 
+
+        #Added instructions to delete task by right clicking and changed color from grey.
         todo1 = tk.Label(self.tasks_frame, text="--- Add Items Here / Right Click to Delete Items ---", bg="linen", fg="black", pady=10)
+
+        #Changed to Button-3 for right click deletion.
         todo1.bind("<Button-3>", self.remove_task)
 
         self.tasks.append(todo1)
@@ -58,6 +73,8 @@ class Todo(tk.Tk):
         self.bind_all("<Button-5>", self.mouse_scroll)
         self.tasks_canvas.bind("<Configure>", self.task_width)
 
+
+        #Changes were made to the colors of the task backgrounds. 
         self.colour_schemes = [{"bg": "linen", "fg": "black"}, {"bg": "peach puff", "fg": "black"}]
 
     def add_task(self, event=None):
@@ -111,6 +128,9 @@ class Todo(tk.Tk):
                 move = -1
 
             self.tasks_canvas.yview_scroll(move, "units")
+
+
+    #Added Proper quit functionality to progrm
 
     def quit_app(self):
         if msg.askokcancel("Quit", "Quitting Already?"):
